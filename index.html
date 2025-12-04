@@ -1,56 +1,419 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/tune-meter/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vanilla App Template</title>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tune-Meter | Разработка AI-ботов и ассистентов</title>
+  <meta name="description" content="Инновационная технология разработки ботов. Светлый, быстрый и умный интерфейс.">
+
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
     <script type="module" crossorigin src="/tune-meter/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/tune-meter/assets/styles-guStct1H.css">
+    <link rel="stylesheet" crossorigin href="/tune-meter/assets/styles-Cu2tonPX.css">
   </head>
   <body>
+    <div class="mouse-glow"></div>
     <header class="header">
-  <div class="container">
-    <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <svg class="nav-logo-icon" width="100" height="30">
-          <use href="{=$icon-path}"></use>
-        </svg>
-      </a>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-act}" href="./page-2.html">Page 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link {=$highlight-curr}" href="./page-3.html">Page 3</a>
-        </li>
+  <div class="container header__container">
+    <a href="./#home" class="header__logo">
+      <i data-lucide="bot" class="header__logo-icon"></i>
+      <span class="header__logo-text">Tune-Meter</span>
+    </a>
+
+    <nav class="header__nav">
+      <ul class="header__menu">
+        <li class="header__item"><a href="./#home" class="header__link">Главная</a></li>
+        <li class="header__item"><a href="./#platform" class="header__link">Платформа</a></li>
+        <li class="header__item"><a href="./#solutions" class="header__link">Решения</a></li>
+        <li class="header__item"><a href="./#blog" class="header__link">AI-Блог</a></li>
       </ul>
     </nav>
+
+    <div class="header__actions">
+      <a href="./#contact" class="header__cta">
+        Связаться
+        <i data-lucide="arrow-right" class="btn-icon"></i>
+      </a>
+      <button class="header__burger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-
-    <main>
+    <main class="main">
       <!-- Loads the specified .html file -->
-      
+      <section class="hero" id="home">
+    <div class="container hero__container">
+
+        <div class="hero__content">
+            <div class="hero__tag">
+                <span class="hero__tag-dot"></span>
+                Инновационная технология 2025
+            </div>
+
+            <h1 class="hero__title">
+                Разработка ботов, <br>
+                которые <span class="text-gradient">меняют правила</span> игры
+            </h1>
+
+            <p class="hero__desc">
+                От простых чатов до AI-ассистентов. Воплотите мечты в реальность: автоматизация, поддержка 24/7 и
+                стратегия роста на базе передовых нейросетей.
+            </p>
+
+            <div class="hero__actions">
+                <a href="#contact" class="btn btn--primary">
+                    Начать сейчас
+                    <i data-lucide="zap" class="btn-icon"></i>
+                </a>
+                <a href="#platform" class="btn btn--outline">
+                    Узнать детали
+                </a>
+            </div>
+
+            <div class="hero__status">
+        <div class="avatars">
+            <img src="/tune-meter/assets/one-C7lFVmyU.jpg" alt="User 1" class="avatar">
+            <img src="/tune-meter/assets/two-DiYHyY4A.jpg" alt="User 2" class="avatar">
+            <img src="/tune-meter/assets/three-eeHsoG8L.jpg" alt="User 3" class="avatar">
+        </div>
+                <p>Платформа уже доступна в Европе</p>
+            </div>
+        </div>
+
+        <div class="hero__visual">
+            <div class="hero__blob hero__blob--1"></div>
+            <div class="hero__blob hero__blob--2"></div>
+
+            <div class="hero__card hero__card--main">
+                <div class="card-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="card-body">
+                    <div class="skeleton-line w-70"></div>
+                    <div class="skeleton-line w-50"></div>
+                    <div class="skeleton-box">
+                        <i data-lucide="bot" class="hero-icon"></i>
+                        <span>AI Analysis...</span>
+                    </div>
+                    <div class="skeleton-line w-90"></div>
+                </div>
+            </div>
+
+            <div class="hero__card hero__card--float">
+                <div class="stat-box">
+                    <span class="stat-value">+145%</span>
+                    <span class="stat-label">Рост эффективности</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="section platform" id="platform">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="badge">Технология</span>
+            <h2 class="section-title">Платформа года для <span class="text-gradient">вашего роста</span></h2>
+            <p class="section-desc">Единая экосистема для создания умных ботов. От простого конструктора до сложных
+                AI-интеграций.</p>
+        </div>
+
+        <div class="platform__grid">
+            <div class="feature-card">
+                <div class="feature-card__icon">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h3 class="feature-card__title">Neural Core 2.0</h3>
+                <p class="feature-card__text">Инновационная технология обработки языка. Бот понимает контекст, а не
+                    просто ключевые слова.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card__icon">
+                    <i data-lucide="layers"></i>
+                </div>
+                <h3 class="feature-card__title">Мультиканальность</h3>
+                <p class="feature-card__text">Подключите Telegram, WhatsApp и Web-чат в один клик. Единый центр
+                    управления диалогами.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-card__icon">
+                    <i data-lucide="bar-chart-3"></i>
+                </div>
+                <h3 class="feature-card__title">Сквозная аналитика</h3>
+                <p class="feature-card__text">Оцените перспективы проекта с помощью детальных отчетов в реальном
+                    времени.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section solutions" id="solutions">
+    <div class="container">
+        <div class="solutions__wrapper">
+            <div class="solutions__content">
+                <h2 class="section-title">Решения, которые<br> меняют правила игры</h2>
+                <ul class="solutions__list">
+                    <li class="solution-item">
+                        <i data-lucide="check-circle-2" class="solution-icon"></i>
+                        <div>
+                            <h4>Автоматизация поддержки</h4>
+                            <p>Снижение нагрузки на операторов до 80%.</p>
+                        </div>
+                    </li>
+                    <li class="solution-item">
+                        <i data-lucide="check-circle-2" class="solution-icon"></i>
+                        <div>
+                            <h4>Умные продажи</h4>
+                            <p>AI-воронки, которые доводят клиента до оплаты.</p>
+                        </div>
+                    </li>
+                    <li class="solution-item">
+                        <i data-lucide="check-circle-2" class="solution-icon"></i>
+                        <div>
+                            <h4>HR и Онбординг</h4>
+                            <p>Удобная адаптация сотрудников без сложностей.</p>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn--primary mt-4">
+                    Получить консультацию
+                </a>
+            </div>
+            <div class="solutions__image">
+                <div class="abstract-ui">
+                    <div class="ui-header">
+                        <span class="ui-dot"></span>
+                        <span class="ui-dot"></span>
+                    </div>
+                    <div class="ui-body">
+                        <div class="ui-msg incoming">
+                            <div class="ui-avatar">AI</div>
+                            <div class="ui-bubble">Анализ завершен. Конверсия выросла на 24%.</div>
+                        </div>
+                        <div class="ui-msg outgoing">
+                            <div class="ui-bubble">Отлично, запускаем сценарий масштабирования.</div>
+                        </div>
+                        <div class="ui-graph">
+                            <div class="graph-bar" style="height: 40%"></div>
+                            <div class="graph-bar" style="height: 60%"></div>
+                            <div class="graph-bar" style="height: 85%"></div>
+                            <div class="graph-bar active" style="height: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section blog" id="blog">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">AI-Блог</h2>
+            <a href="#" class="link-arrow">Все статьи <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <div class="blog__grid">
+            <article class="blog-card">
+                <div class="blog-card__image">
+                    <img src="/tune-meter/assets/four-BldKJ4bA.jpg" alt="AI Trends">
+                    <span class="blog-tag">Тренды</span>
+                </div>
+                <div class="blog-card__content">
+                    <div class="blog-date">12 Октября 2025</div>
+                    <h3 class="blog-title">Как AI-ассистенты меняют рынок услуг во Франции</h3>
+                    <a href="#contact" class="blog-link">Читать далее</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card__image">
+                    <img src="/tune-meter/assets/five-CqlmPMAs.jpg" alt="Automation">
+                    <span class="blog-tag">Технологии</span>
+                </div>
+                <div class="blog-card__content">
+                    <div class="blog-date">28 Сентября 2025</div>
+                    <h3 class="blog-title">LLM модели: стратегии внедрения для малого бизнеса</h3>
+                    <a href="#contact" class="blog-link">Читать далее</a>
+                </div>
+            </article>
+
+            <article class="blog-card">
+                <div class="blog-card__image">
+                    <img src="/tune-meter/assets/six-DHSfgUZn.jpg" alt="Future">
+                    <span class="blog-tag">Инновации</span>
+                </div>
+                <div class="blog-card__content">
+                    <div class="blog-date">15 Сентября 2025</div>
+                    <h3 class="blog-title">Будущее No-Code разработки: прогнозы на 2026</h3>
+                    <a href="#contact" class="blog-link">Читать далее</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <div class="container contact__container">
+        <div class="contact__info">
+            <h2 class="section-title">Воплотите идеи<br> в реальность</h2>
+            <p class="contact__desc">
+                Оставьте заявку, и мы разработаем стратегию внедрения AI для вашего бизнеса. Экспертная поддержка на
+                всех этапах.
+            </p>
+
+            <div class="contact__details">
+                <div class="contact-item">
+                    <div class="contact-icon-box"><i data-lucide="map-pin"></i></div>
+                    <div>
+                        <h5>Офис в Париже</h5>
+                        <p>12 Avenue de la République, 75011 Paris</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box"><i data-lucide="mail"></i></div>
+                    <div>
+                        <h5>Email</h5>
+                        <p>support@tune-meter.ink</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact__form-wrapper">
+            <form class="contact__form" id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="name" class="form-label">Ваше имя</label>
+                    <input type="text" id="name" class="form-input" placeholder="Иван Петров" required>
+                    <span class="error-msg">Введите имя</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="hello@company.com" required>
+                    <span class="error-msg">Введите корректный email</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Телефон</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="Только цифры" required>
+                    <span class="error-msg">Введите номер телефона</span>
+                </div>
+
+                <div class="form-group captcha-group">
+                    <label for="captcha" class="form-label" id="captchaLabel">Сколько будет 3 + 5?</label>
+                    <input type="number" id="captcha" class="form-input" required>
+                    <span class="error-msg">Неверный ответ</span>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="consent" required>
+                    <label for="consent">Я соглашаюсь с <a href="personal-data-policy.html">политикой обработки
+                            данных</a></label>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--full">
+                    <span>Отправить заявку</span>
+                    <i data-lucide="send" class="btn-icon"></i>
+                </button>
+
+                <div class="form-success" id="formSuccess">
+                    <i data-lucide="check-circle"></i>
+                    <span>Сообщение успешно отправлено!</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
     </main>
 
     <footer class="footer">
-  <div class="container">
-    <p class="footer-desc">
-      Made with ✨ by
-      <a
-        class="footer-link"
-        href="https://goit.global/ua/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        GoIT team
-      </a>
-    </p>
+  <div class="container footer__container">
+    <div class="footer__col footer__col--brand">
+      <a href="./#home" class="footer__logo">Tune-Meter</a>
+      <p class="footer__desc">
+        Автоматизация нового уровня. Боты, которые работают 24/7.
+      </p>
+      <div class="footer__socials">
+        <a href="https://t.me" class="footer__social-link" aria-label="Telegram"><i data-lucide="send"></i></a>
+        <a href="https://twitter.com" class="footer__social-link" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="https://linkedin.com" class="footer__social-link" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">Навигация</h3>
+      <ul class="footer__list">
+        <li><a href="./#home" class="footer__link">Главная</a></li>
+        <li><a href="./#platform" class="footer__link">О платформе</a></li>
+        <li><a href="./#solutions" class="footer__link">Кейсы</a></li>
+        <li><a href="./#contact" class="footer__link">Поддержка</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">Информация</h3>
+      <ul class="footer__list">
+        <li><a href="./privacy.html" class="footer__link">Политика конфиденциальности</a></li>
+        <li><a href="./cookies.html" class="footer__link">Политика использования файлов cookie</a></li>
+        <li><a href="./terms.html" class="footer__link">Условия и положения</a></li>
+        <li><a href="./return.html" class="footer__link">Политика возврата</a></li>
+        <li><a href="./disclaimer.html" class="footer__link">Отказ от ответственности</a></li>
+        <li><a href="./personal-data-policy.html" class="footer__link">Обработка данных</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__title">Контакты</h3>
+      <ul class="footer__contacts">
+        <li class="footer__contact-item">
+          <i data-lucide="phone" class="footer__icon"></i>
+          <span>+33 1 40 55 67 89</span>
+        </li>
+        <li class="footer__contact-item">
+          <i data-lucide="mail" class="footer__icon"></i>
+          <a href="mailto:support@tune-meter.ink">support@tune-meter.ink</a>
+        </li>
+        <li class="footer__contact-item">
+          <i data-lucide="map-pin" class="footer__icon"></i>
+          <span>12 Avenue de la République, 75011 Paris</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <p>&copy; 2025 Tune-Meter. Платформа уже доступна в Европе.</p>
+    </div>
   </div>
 </footer>
-
-
+    <div class="cookie-popup" id="cookiePopup">
+      <div class="cookie-content">
+        <p>Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a href="./cookies.html">Cookie
+            политике</a>.</p>
+        <button class="btn btn--primary btn--sm" id="acceptCookies">Принять</button>
+      </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="script.js"></script>
+    <script>lucide.createIcons();</script>
   </body>
 </html>
