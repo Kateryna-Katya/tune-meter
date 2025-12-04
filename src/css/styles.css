@@ -68,7 +68,6 @@ img {
 }
 
 /* --- MOUSE GLOW (Light Mode) --- */
-/* Создаем мягкое зеленое пятно за курсором */
 .mouse-glow {
     position: fixed;
     top: 0;
@@ -77,7 +76,6 @@ img {
     height: 100vh;
     pointer-events: none;
     z-index: 0;
-    /* Под контентом */
     background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%),
             var(--glow-color),
             transparent 40%);
@@ -96,6 +94,60 @@ h4 {
     letter-spacing: -0.02em;
 }
 
+/* --- UI COMPONENTS (Buttons) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.btn--primary {
+    background: var(--text-primary);
+    color: #fff;
+    border: 1px solid var(--text-primary);
+}
+
+.btn--primary:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 214, 108, 0.3);
+}
+
+.btn--outline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn--outline:hover {
+    border-color: var(--text-primary);
+    background: #fff;
+}
+
+.btn--full {
+    width: 100%;
+}
+
+.btn--sm {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
 /* --- HEADER --- */
 .header {
     position: fixed;
@@ -104,7 +156,6 @@ h4 {
     width: 100%;
     height: var(--header-height);
     background: rgba(245, 247, 246, 0.85);
-    /* Полупрозрачный белый */
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
@@ -132,23 +183,42 @@ h4 {
     stroke-width: 2.5px;
 }
 
+/* Mobile Menu */
 .header__nav {
-    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    height: calc(100vh - var(--header-height));
+    background: var(--bg-color);
+    padding: 40px 20px;
+    border-top: 1px solid var(--border-color);
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
 }
 
-@media (min-width: 992px) {
-    .header__nav {
-        display: block;
-    }
+.header__nav.is-active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
 }
 
 .header__menu {
     display: flex;
-    gap: 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
 .header__link {
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     color: var(--text-secondary);
     position: relative;
     font-weight: 500;
@@ -158,7 +228,31 @@ h4 {
     color: var(--text-primary);
 }
 
-/* Подчеркивание при наведении */
+/* Desktop Menu Override */
+@media (min-width: 992px) {
+    .header__nav {
+        position: static;
+        height: auto;
+        width: auto;
+        background: transparent;
+        padding: 0;
+        border: none;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: block;
+    }
+
+    .header__menu {
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    .header__link {
+        font-size: 0.95rem;
+    }
+}
+
 .header__link::after {
     content: '';
     position: absolute;
@@ -185,7 +279,6 @@ h4 {
     align-items: center;
     gap: 8px;
     background: var(--text-primary);
-    /* Черная кнопка */
     color: #fff;
     padding: 10px 24px;
     border-radius: 50px;
@@ -228,253 +321,19 @@ h4 {
     height: 2px;
     background-color: var(--text-primary);
     transition: var(--transition);
-}
-
-/* --- FOOTER --- */
-/* Футер оставляем темным или светло-серым? 
-   Сделаем "плотный" белый (чуть темнее фона) для чистоты стиля */
-.footer {
-    background-color: #ffffff;
-    border-top: 1px solid var(--border-color);
-    padding: 80px 0 20px;
-    margin-top: auto;
-}
-
-.footer__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin-bottom: 60px;
-}
-
-@media (min-width: 768px) {
-    .footer__container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .footer__container {
-        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-    }
-}
-
-.footer__logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 16px;
-    display: block;
-}
-
-.footer__desc {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 24px;
-    max-width: 300px;
-}
-
-.footer__socials {
-    display: flex;
-    gap: 12px;
-}
-
-.footer__social-link {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: #f0f2f1;
-    /* Light grey bg for icons */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    transition: var(--transition);
-}
-
-.footer__social-link:hover {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-.footer__title {
-    font-size: 1.1rem;
-    color: var(--text-primary);
-    margin-bottom: 24px;
-}
-
-.footer__list li {
-    margin-bottom: 12px;
-}
-
-.footer__link {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-.footer__link:hover {
-    color: var(--primary-color);
-    padding-left: 5px;
-}
-
-.footer__contacts li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 16px;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-.footer__icon {
-    color: var(--primary-color);
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-}
-
-.footer__bottom {
-    padding-top: 24px;
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    color: #99aab5;
-    font-size: 0.85rem;
-}
-/* --- MOBILE MENU STYLES --- */
-
-/* 1. Базовые стили меню (для мобильных) */
-.header__nav {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    height: calc(100vh - var(--header-height));
-    background: var(--bg-color);
-    /* Фон страницы */
-    padding: 40px 20px;
-    border-top: 1px solid var(--border-color);
-
-    /* Скрываем меню */
-    transform: translateX(100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-
-    /* Центрируем ссылки */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 900;
-}
-
-/* 2. Состояние .is-active (когда JS добавляет класс) */
-.header__nav.is-active {
-    transform: translateX(0);
-    opacity: 1;
-    visibility: visible;
-}
-
-/* 3. Стили ссылок внутри мобильного меню */
-.header__menu {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-}
-
-.header__link {
-    font-size: 1.5rem;
-    /* Крупнее для пальца */
-    font-weight: 600;
-}
-
-/* --- DESKTOP OVERRIDE (Возвращаем обычный вид на ПК) --- */
-@media (min-width: 992px) {
-    .header__nav {
-        position: static;
-        height: auto;
-        width: auto;
-        background: transparent;
-        padding: 0;
-        border: none;
-        transform: none;
-        opacity: 1;
-        visibility: visible;
-        display: block;
-    }
-
-    .header__menu {
-        flex-direction: row;
-        gap: 32px;
-    }
-
-    .header__link {
-        font-size: 0.95rem;
-    }
-}
-
-/* --- BURGER ANIMATION (Крестик) --- */
-.header__burger span {
     transform-origin: center;
 }
 
-/* Верхняя палочка поворачивается */
 .header__burger.is-active span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
 }
 
-/* Средняя исчезает */
 .header__burger.is-active span:nth-child(2) {
     opacity: 0;
 }
 
-/* Нижняя поворачивается */
 .header__burger.is-active span:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
-}
-/* --- UI COMPONENTS (Buttons) --- */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.btn--primary {
-    background: var(--text-primary);
-    color: #fff;
-    border: 1px solid var(--text-primary);
-}
-
-.btn--primary:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: #fff;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 214, 108, 0.3);
-}
-
-.btn--outline {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-}
-
-.btn--outline:hover {
-    border-color: var(--text-primary);
-    background: #fff;
-}
-
-.btn-icon {
-    width: 18px;
-    height: 18px;
 }
 
 /* --- HERO SECTION --- */
@@ -501,14 +360,12 @@ h4 {
     }
 }
 
-/* Left Content */
 .hero__tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: rgba(0, 214, 108, 0.1);
     color: #008f48;
-    /* Darker green for text */
     padding: 8px 16px;
     border-radius: 30px;
     font-size: 0.85rem;
@@ -543,7 +400,6 @@ h4 {
     display: inline-block;
 }
 
-/* Декоративное подчеркивание для акцентного слова */
 .text-gradient::after {
     content: '';
     position: absolute;
@@ -585,24 +441,32 @@ h4 {
     font-weight: 500;
 }
 
+/* Avatars */
 .avatars {
     display: flex;
+    padding-left: 10px;
 }
 
 .avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #e0e0e0;
     border: 2px solid #fff;
     margin-left: -10px;
+    object-fit: cover;
+    background-color: #e0e0e0;
+    position: relative;
+    transition: transform 0.3s ease, z-index 0.3s;
+    display: block;
 }
 
-.avatar:first-child {
-    margin-left: 0;
+.avatar:hover {
+    transform: translateY(-5px) scale(1.1);
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Right Content (Visual) */
+/* Hero Visual */
 .hero__visual {
     position: relative;
     height: 400px;
@@ -611,7 +475,6 @@ h4 {
     justify-content: center;
 }
 
-/* Blobs (Green Glows) */
 .hero__blob {
     position: absolute;
     border-radius: 50%;
@@ -638,7 +501,6 @@ h4 {
     animation: float 6s ease-in-out infinite reverse;
 }
 
-/* Abstract Cards */
 .hero__card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
@@ -738,7 +600,7 @@ h4 {
     color: var(--text-secondary);
 }
 
-/* Animations Keyframes */
+/* Animations */
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -769,6 +631,7 @@ h4 {
         transform: translateY(0px) rotate(3deg);
     }
 }
+
 /* --- SECTIONS COMMON --- */
 .section {
     padding: 100px 0;
@@ -845,11 +708,6 @@ h4 {
     margin-bottom: 24px;
 }
 
-.feature-card__icon svg {
-    width: 30px;
-    height: 30px;
-}
-
 .feature-card__title {
     font-size: 1.25rem;
     margin-bottom: 12px;
@@ -863,7 +721,6 @@ h4 {
 /* --- SOLUTIONS SECTION --- */
 .solutions {
     background: #eef2f0;
-    /* Slight contrast bg */
 }
 
 .solutions__wrapper {
@@ -899,7 +756,6 @@ h4 {
     justify-content: center;
 }
 
-/* Abstract UI in Solutions */
 .abstract-ui {
     width: 100%;
     max-width: 450px;
@@ -1125,7 +981,6 @@ h4 {
     box-shadow: 0 0 0 4px rgba(0, 214, 108, 0.1);
 }
 
-/* Error styles */
 .error-msg {
     color: #ff4757;
     font-size: 0.8rem;
@@ -1160,10 +1015,6 @@ h4 {
     text-decoration: underline;
 }
 
-.btn--full {
-    width: 100%;
-}
-
 .form-success {
     display: none;
     margin-top: 20px;
@@ -1190,7 +1041,6 @@ h4 {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     z-index: 2000;
     display: none;
-    /* Скрыт по умолчанию */
     border: 1px solid var(--border-color);
 }
 
@@ -1202,12 +1052,197 @@ h4 {
     font-size: 0.9rem;
 }
 
-.btn--sm {
-    padding: 8px 20px;
-    font-size: 0.9rem;
+/* --- FOOTER --- */
+.footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--border-color);
+    padding: 80px 0 20px;
+    margin-top: auto;
 }
-.contact__details {
-    margin-top: 20px;
-    font-size: 0.9rem;
+
+.footer__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+    .footer__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer__container {
+        grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    }
+}
+
+.footer__logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.footer__desc {
     color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    max-width: 300px;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer__social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #f0f2f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.footer__social-link:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.footer__title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.footer__list li {
+    margin-bottom: 12px;
+}
+
+.footer__link {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer__link:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.footer__contacts li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 16px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.footer__icon {
+    color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.footer__bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: #99aab5;
+    font-size: 0.85rem;
+}
+
+/* ========================================= */
+/* --- LEGAL PAGES STYLES (NEW) --- */
+/* ========================================= */
+.pages {
+    padding-top: calc(var(--header-height) + 60px);
+    padding-bottom: 100px;
+    background-color: #fff;
+    min-height: 100vh;
+}
+
+.pages .container {
+    max-width: 800px;
+}
+
+.pages h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.pages h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.pages h2 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.pages p {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5em;
+    line-height: 1.7;
+}
+
+.pages ul {
+    list-style: none;
+    margin-bottom: 1.5em;
+    padding-left: 0;
+}
+
+.pages li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.pages li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.text-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 214, 108, 0.3);
+    text-underline-offset: 4px;
+}
+
+.text-link:hover {
+    color: var(--primary-hover);
+    text-decoration-color: var(--primary-color);
 }
